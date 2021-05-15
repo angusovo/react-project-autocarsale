@@ -1,0 +1,105 @@
+.about{
+    background-color: whitesmoke;
+    
+}
+
+.about-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.about-header{
+    background: url("https://images.unsplash.com/photo-1580446632971-9c9755741304?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80")
+     center center/cover no-repeat;
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    
+}
+.contact-container{
+    padding: 5rem;
+}
+.contact-info{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.contact-input{
+    flex: 50%;
+}
+
+.contact-message{
+    margin-bottom: 5px;
+}
+.contact-input input, textarea {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+.contact-info{
+    background-color: #fff;
+    flex: 30%;
+    padding: 3rem;
+    
+}
+.about-header > h2 {
+    color: #fff;
+}
+
+.contact-content{
+    display: flex;
+    
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+}
+
+.info-icon{
+}
+
+.info-icon >i {
+    font-size: 40px;
+    color: rgb(240, 205, 51);
+    margin-right: 20px;
+}
+
+.info-text{
+    flex: 0.7;
+}
+.contact-btn{
+    border: none;
+    background-color: rgb(240, 205, 51);
+    width: 70%;
+    padding: 7px 15px;
+    margin: auto;
+    
+}
+@media screen and (max-width: 960px) {
+    .contact-content{
+        flex-direction: column;
+    }
+    .contact-info{
+        margin: 10px ;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .contact-info{
+        padding: 1rem;
+    }
+    .contact-container{
+        padding: 2rem;
+    }
+    .contact-info{
+        margin: 5px ;
+    }
+    .contact-input> form{
+        padding: 0.5rem;
+    }
+}

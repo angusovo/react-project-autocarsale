@@ -1,0 +1,27 @@
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap:10px    
+}
+
+.sellcar-container form> input {
+    padding:5px;
+    
+    border:none ;
+    border-bottom: 1px solid black;
+}
+
+
+.error {
+    color: red;
+    font-size: 0.6rem;
+}
+
+.sellcar-container form> button {
+    background-color: #fff;
+    border: 1px solid black;
+    padding: 5px;
+    font-size: 1.2rem;
+    width: 50%;
+}

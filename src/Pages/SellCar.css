@@ -1,0 +1,68 @@
+.sellcar {
+    padding: 5rem;
+}
+
+
+.sellcar-container {
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+    -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+    filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+}
+.sell-car-form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding: 10px;
+    margin: 10px;
+    
+}
+
+.sell-car-form > * {
+    margin-bottom: 10px;
+}
+
+.sell-car-form > button {
+    width: 20%;
+    min-width: 150px;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.sell-car-form > input, select {
+    border: none;
+    border-bottom: 2px solid #242424;
+    padding: 5px;
+    width: 60%;
+    min-width: 300px;
+}
+
+.transmission-text > label {
+    margin: 10px 20px 10px 30px; 
+}
+
+.sell-car-img {
+    display: flex;
+    padding: 10px;
+}
+
+.sell-car-img > img {
+    width: 100%;
+    object-fit: cover;
+    
+}
+
+@media screen and (max-width: 660px) {
+    
+    .sell-car-img > img {
+        display: none;
+}
+    .sellcar {
+        padding: 1rem;
+    }
+    .sell-car-form {
+        width: 80%;
+    }
+}

@@ -1,0 +1,135 @@
+.cars {
+    padding: 5rem;
+}
+
+
+.car-detail-container{
+    display: flex;
+    margin: 5px;
+    flex-direction: column;
+    align-items: center;
+    
+
+}
+
+.car-detail-header {
+    display: flex;
+}
+
+.car-img-wrapper {
+    width: 50%;
+    flex: 0.7;
+}
+
+.car-img {
+    margin: auto;
+    width: 100%;
+    object-fit: contain;
+    min-width: 300px;
+    
+}
+
+.car-description{
+    flex: 0.3;
+    margin: 10px 50px;
+    background-color: rgb(226, 226, 226);
+    padding: 20px;
+    display: flex;
+}
+
+.car-description-header {
+    flex-direction: column;
+    text-transform: uppercase;
+    color: #444444;
+    display: flex;
+    justify-content: space-between;
+    
+
+}   
+
+
+
+.car-price {
+    font-weight: 400;
+}
+
+
+.car-production {
+
+    display: flex;
+    align-items: center;
+    
+}
+
+.car-production >* {
+    margin: 5px;
+    padding: 5px;
+    border-right: 1px solid #242424;
+}
+
+
+.car-content{
+    display: flex;
+    flex-direction: column;
+}
+.car-content a {
+    width: 10%;
+}
+.car-content img {
+    width: 100%;
+}
+.car-detail-footer{
+   background-color: rgb(226, 226, 226);
+   margin: 2rem;
+   width: 100%;
+
+    
+}
+.car-footer-container{
+    
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.car-spec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.car-spec > h4 {
+    color: rgb(105, 105, 105);
+}
+
+.car-footer-top {
+    display: grid;
+    grid-row-gap: 30px;    
+    grid-column-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+
+}
+
+@media screen and (max-width: 960px) {
+    .car-detail-header{
+        flex-direction: column;
+        align-items: center;
+    }
+    .car-img-wrapper {
+        width: 80%;
+    }
+
+    .cars {
+        padding: 1rem;
+    }
+    .car-content a {
+        width: 15%;
+    }
+    .car-make, .car-price {
+        margin-bottom: 2rem;
+    }
+    .car-description {
+        margin: 1rem;
+    }
+}

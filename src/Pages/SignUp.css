@@ -1,0 +1,83 @@
+.signup{
+    background-color: rgb(233, 233, 233);
+    display: flex;
+    justify-content: center;
+}
+
+.signup-container{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    padding: 4rem 4rem;
+    margin: 4rem ;
+    background: #fff;
+    height: 70vh;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+    -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+    filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+}
+.signup-image{
+    background: url("https://fsb.zobj.net/crop.php?r=PDBwKa-NlP1NOl3ZCL2Q-0fduEpyHtMrdMALA0h8NA3ED636H2iVZb77zvCup4bOjCWZO9AvQCtZiXshuByJAY_NmANLATNjGG6r5YZ0lnzoInEgvToeoh85JseZY8jziKg-EW1huUF12hqe")
+    center center/cover no-repeat;
+    width: 50%;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+}
+.signup-form{
+    margin: auto;
+    width: 50%;
+}
+.signup-form input {
+    border: none;
+    background: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.sign-up-button {
+    width: 150px;
+    border: none;
+    padding: 5px 10px;
+    background: #fff;
+    margin:10px;
+    cursor: pointer;
+}
+.sign-up-button:hover{
+    background-color: #f0f0f0;
+    transition: ease-in 0.2s;
+}
+
+@media screen and (max-width: 960px) {
+    .signup-container{
+        padding: 1rem 1.5rem;
+    }
+    .signup-image{
+        margin:30px 0;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .signup-container{
+        padding: 1rem;
+    }
+    .signup-image{
+        display: none;
+    }
+    .signup-container{
+        width: 95%;
+        margin: 2rem;
+        
+    }
+    .signup-form{
+        width: 100%;
+        margin: auto 10px;
+    }
+    .signup-form > form {
+        padding: 0;
+    }
+}

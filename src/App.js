@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Component/Header';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import Home from './Pages/Home';
+import Carlist from "./Pages/Carlist"
+import SellCar from './Pages/SellCar';
+import Blog from './Pages/Blog';
+import About from './Pages/About';
+import Footer from './Component/Footer';
+import Cars from './Pages/Cars';
+import SignUp from './Pages/SignUp';
+import { AuthProvider } from './Context/AuthContext';
+import Login from './Pages/Login';
+import SellCarInfo from './Pages/SellCarInfo';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <AuthProvider>
+          <Header/>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/carlist" component={Carlist}/>
+            <Route path="/sellcar" exact component={SellCar}/>
+            <Route path="/blogs/:blogId" component={Blog}/>
+            <Route path="/about" component={About}/>
+            <Route path="/cars/:carId" component={Cars}/>
+            <Route path="/signup" component={SignUp}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/sellcarinfo" component={SellCarInfo}/>
+          </Switch>
+          <Footer/>
+          </AuthProvider>
+      </Router>
+    </>
   );
 }
 
