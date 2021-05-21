@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState} from 'react'
 import { Link } from "react-router-dom"
 import { Button } from './Button'
 import "./Header.css"
@@ -7,7 +7,6 @@ import { useAuth } from "../Context/AuthContext"
 function Header() {
     
     const [clickMenu, setClickMenu] = useState(false)
-    // const [button, setButton] = useState(true)
 
     const closeMobileMenu =()=> setClickMenu(false)
 
@@ -27,22 +26,6 @@ function Header() {
 
         
     }
-    // const showButton =()=> {
-    //     if (window.innerWidth <= 960){
-    //         setButton(false)
-    //     }
-    //     else{
-    //         setButton(true)
-    //     }
-    // }
-
-    // useEffect(()=>{
-    //     showButton()
-
-    // },[])
-
-    // window.addEventListener("resize", showButton)
-
     
     return (
         <>

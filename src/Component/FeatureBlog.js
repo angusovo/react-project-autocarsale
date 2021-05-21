@@ -28,10 +28,10 @@ function FeatureBlog() {
             <div className="blog-container">
                 <div className="blog-wrapper">
                     <ul className="box-items">
-                    {blog.slice(0,2).map(item=>(<BoxItem src={item.img} id={item.id} heading={item.heading}/>))}
+                    {blog.slice(0,2).map((item,key)=>(<BoxItem key={key} src={item.img} id={item.id} heading={item.heading}/>))}
                     </ul>
                     <ul className="box-items">
-                    {blog.slice(3,6).map(item=>(<BoxItem src={item.img} id={item.id} heading={item.heading}/>))}
+                    {blog.slice(3, 6).map((item, key) => (<BoxItem key={key} src={item.img} id={item.id} heading={item.heading}/>))}
 
                     </ul>
                 </div>

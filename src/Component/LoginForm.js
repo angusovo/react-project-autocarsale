@@ -17,7 +17,7 @@ function LoginForm() {
                 </>
             )
     }
-    const {login, error} = useAuth()
+    const {login,} = useAuth()
     const [errors, setErrors] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const history = useHistory()

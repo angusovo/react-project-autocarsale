@@ -18,9 +18,8 @@ function SignUpForm() {
                 </>
             )
     }
-    const {signUp, error} = useAuth()
+    const {signUp, } = useAuth()
     const [errors, setErrors] = useState("")
-    const [isLoading, setIsLoading] = useState(false)
     const history = useHistory()
     
     window.scroll(0,0)
@@ -38,7 +37,6 @@ function SignUpForm() {
             onSubmit={ async(values, {resetForm})=>{
                 
                 setErrors("")
-                setIsLoading(true)
                 await signUp(values.email, values.password)
                 .then((req)=>{
                     history.push("/")
@@ -55,7 +53,6 @@ function SignUpForm() {
                     console.log(error);
                   });
             
-            setIsLoading(false)
             
         }
         }

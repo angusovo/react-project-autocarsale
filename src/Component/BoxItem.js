@@ -9,8 +9,8 @@ function BoxItem({src, text,heading, id, path }) {
     }
     return (
         <>
-        <li className="box-item" onClick={selectBlog}>
-            <Link className="box-item-link" to={path}>
+        <li className="box-item" onClick={id?selectBlog:null}>
+            <Link className="box-item-link" to={path?path:"/"}>
                 <figure className="box-item-pic-wrap">
                     <img 
                     className="box-item-img"

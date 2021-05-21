@@ -23,7 +23,7 @@ function SellingInfo() {
                 heading="An offer you can count on"
                 text="No matter where you sell, start with a custom offer from CarMax."
                 />
-                <Button><Link to="/sellcar">Click to Sell!</Link></Button>
+                <Button location="/sellcar">Click to Sell!</Button>
             </div>
         </div>
     )

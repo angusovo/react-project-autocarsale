@@ -26,7 +26,7 @@ function CardItem({
   return (
     <>
       <li className='cards__item' onClick={selectCar}>
-        <Link className='cards__item__link' to={path}>
+        <Link className='cards__item__link' to={path?path:"/"}>
           <figure className='cards__item__pic-wrap' data-category={label}>
             <img
               className='cards__item__img'

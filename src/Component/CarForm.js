@@ -94,8 +94,8 @@ function CarForm() {
             {formik =>(
             <Form>
                 <h1>Car Selling Form:</h1>
-                <CustomSelect label="Car Make:" name="carMake">
-                    <option selected>Select your Car Make</option>
+                    <CustomSelect label="Car Make:" name="carMake" >
+                    <option value="">Select your Car Make</option>
                     <option value="BMW">bmw</option>
                     <option value="AUDI">audi</option>
                     <option value="FERRARI">ferrari</option>
@@ -107,16 +107,16 @@ function CarForm() {
                 <CustomTextInput label="Car Veriant/Version:" name="carVeriant" placeholder="e.g. sport version/coupe"/>
                 <CustomTextInput label="Production Year:" name="year" placeholder="Production year of your car"/>
                 <CustomTextInput label="Engine Capacity:" name="cc" placeholder="CC?"/>
-                <CustomSelect label="Car fuel:" name="fuel" defaultValue="Petrol">
-                    <option selected>Select your car's fuel</option>
+                <CustomSelect label="Car fuel:" name="fuel">
+                    <option value="">Select your car's fuel</option>
                     <option value="Petrol">Petrol</option>
                     <option value="Eletric">Eletric</option>
                     <option value="Hybrid">Hybrid</option>
                 </CustomSelect>
                 <CustomTextInput label="Seats:" name="seat" placeholder="No of seats(include driver)?"/>
                 <CustomTextInput label="No. of previous owner:" name="owner" placeholder=""/>
-                <CustomSelect label="Transmission:" name="transmission" defaultValue="Auto">
-                    <option selected>Select you car's transmission</option>
+                <CustomSelect label="Transmission:" name="transmission" >
+                    <option value="">Select you car's transmission</option>
                     <option value="Auto">Auto</option>
                     <option value="Manual">Manual</option>
                 </CustomSelect>

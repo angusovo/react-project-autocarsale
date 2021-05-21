@@ -15,8 +15,6 @@ export function AuthProvider({children}) {
     const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(true)
 
-    const history = useHistory()
-
     const signUp =(email,password)=> {
         return firebaseApp.auth().createUserWithEmailAndPassword(email, password)
        
