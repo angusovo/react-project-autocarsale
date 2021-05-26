@@ -5,7 +5,8 @@ import cc_icon from "../Component/images/engine_cc.png"
 import fuel_icon from "../Component/images/fuel.png"
 import transmission_icon from "../Component/images/transmission.png"
 import owner_icon from "../Component/images/owner.png"
-import { Button } from './Button'
+
+
 
 function CarDetail({
     imgUrl, 
@@ -20,7 +21,10 @@ function CarDetail({
     transmission,
     cc,
     fuel,
-}) {
+        }) 
+    {
+
+
     return (
         <div className="car-detail">
             <div className="car-detail-container">
@@ -66,12 +70,10 @@ function CarDetail({
                             
                         </div>
                         <div className="car-footer-bottom">
-
                         </div>
                     </div>
                 </div>
 
-                <Button location="/carlist">Back to Car list</Button>
             </div>
             
         </div>

@@ -79,7 +79,7 @@
     width: 100%;
 }
 .car-detail-footer{
-   background-color: rgb(226, 226, 226);
+
    margin: 2rem;
    width: 100%;
 
@@ -89,7 +89,6 @@
     
     display: flex;
     flex-direction: column;
-    margin: 20px;
 }
 
 .car-spec {
@@ -108,7 +107,62 @@
     grid-row-gap: 30px;    
     grid-column-gap: 30px;
     grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    background-color: rgb(226, 226, 226);
+    padding: 1rem;
+}
 
+.car-discuss {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.car-discuss > img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    
+}
+.message_time {
+    color: rgb(109, 104, 104);
+    font-weight: 300;
+    font-size: 13px;
+    margin-left: 10px;
+}
+
+.message_info {
+    padding-left: 10px;
+}
+.message_input{
+    display: flex;
+    
+    
+}
+.message_input>form{
+   width: 100%;
+    
+    
+}
+.message_input>img{
+    width: 75px;
+    object-fit: contain;
+}
+.message_input textarea{
+    width: 100%;
+    border: 1px solid #242424;
+    padding: 10px 20px;
+    font: 14px ;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    resize: none;
+    
+}
+.chat_nologin{
+    margin: 100px auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media screen and (max-width: 960px) {
@@ -133,4 +187,9 @@
         margin: 1rem;
         width: 100%;
     }
+}
+@media screen and (max-width: 600px) {
+.message_input textarea{
+    height: 5rem;
+}
 }
