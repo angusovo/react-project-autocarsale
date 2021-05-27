@@ -12,7 +12,7 @@ function Contact() {
             </div>
             <div className="contact-content">
                 <div className="contact-input">
-                    <form>
+                    <form className="contact-form">
                         <label>Your Email:</label>
                         <input type="text" placeholder="Email" />
                         <label>Your Name:</label>

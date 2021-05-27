@@ -8,6 +8,7 @@ import {Button} from "../Component/Button.js"
 import ChatInput from "../Component/ChatInput"
 import {useAuth} from "../Context/AuthContext"
 import ChatNoLogin from "../Component/ChatNoLogin"
+import Nodicussion from "../Component/Nodicussion"
 
 function Cars() {
     const { carId } = useParams()
@@ -29,7 +30,7 @@ function Cars() {
                 
     }, [carId])
     const displayDiscussMessage= carDiscuss.map(items=>(
-        <CarDiscuss username={items.username} message={items.message} timestamp={items.timestamp}/>
+        <CarDiscuss currentUser={currentUser} sellerId={carMessage.uid} username={items.username} message={items.message} timestamp={items.timestamp}/>
     ))
     return (
         <div className="cars">
@@ -49,12 +50,16 @@ function Cars() {
             transmission={carMessage.transmission}
             />
 
-            {displayDiscussMessage}
+            <div className="car_comment">
+                <h4 className="comment_header">Comment</h4>
+                {carDiscuss.length===0?<Nodicussion/>:
+                displayDiscussMessage}
 
-            {currentUser ? <ChatInput carId={carId} />:<ChatNoLogin/>}
+                {currentUser ? <ChatInput sellerId={carMessage.uid} carId={carId} />:<ChatNoLogin/>}
+
+            </div>
 
             <Button location="/carlist">Back to Car list</Button>
-            {console.log(carDiscuss)}
         </div>
     )
 }

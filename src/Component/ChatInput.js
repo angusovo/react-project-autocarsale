@@ -4,9 +4,18 @@ import firebase from "firebase"
 import {useAuth} from "../Context/AuthContext"
 import { Button } from '@material-ui/core'
 import avatar from "../Component/images/avatar.png"
-function ChatInput({carId}) {
+function ChatInput({ carId, sellerId}) {
     const {currentUser} = useAuth()
     const [input, setInput] = useState("")
+
+    const sellerMessage = () => {
+        if (sellerId === currentUser.uid) {
+            return `${currentUser.email}(seller)`
+        }
+        else {
+            return currentUser.email
+        }
+    }
 
     const handleSubmit=(e)=>{
         e.preventDefault()
@@ -14,13 +23,14 @@ function ChatInput({carId}) {
             {
                 message: input,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                username: currentUser.email,
+                username: sellerMessage(),
                 
             }
         ) 
         setInput("")
     
     }
+
     const handleChange= e=>{
         setInput(e.target.value)
     }
@@ -28,7 +38,9 @@ function ChatInput({carId}) {
         <div className="message_input">
             <img src={avatar} alt="user avatar"/>
             <form>
-                {currentUser.email}
+                {sellerId===currentUser.uid?
+                <p className="message_seller">{currentUser.email}(seller)</p>:
+                currentUser.email}
                 <textarea placeholder="enter your comment" onChange={handleChange}/>
                 <Button variant="contained" color="primary" type="submit" onClick={handleSubmit}>enter</Button>
             </form>

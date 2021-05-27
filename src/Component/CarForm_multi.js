@@ -148,8 +148,6 @@ export function FormikStepper({children, ...props}){
         {formik => (
         <Form autoComplete="off">
             {currentChild}
-            {console.log(formik.values)}
-            {console.log(currentUser.uid)}
             {isLastStep() ? 
             <input type="file" name="file" onChange={handleUpload} /> 
             : null}
