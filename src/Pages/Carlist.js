@@ -4,11 +4,21 @@ import CardItem from "../Component/CardItem"
 import "./Carlist.css"
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-
+import Pagination from '@material-ui/lab/Pagination';
+import { ButtonGroup, Button } from '@material-ui/core';
 function Carlist() {
     const [carlist, setCarlist] = useState([]) 
     const [sortType, setSortType] = useState("timestamp")
     const [isReverse, setIsReverse] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [postPerPage, setPostPerPage] = useState(10)
+
+    const indexOfLastPost =currentPage * postPerPage
+    const indexOfFirstPost = indexOfLastPost - postPerPage
+
+    const currentPost = carlist.slice(indexOfFirstPost, indexOfLastPost)
+    const paginationLength = Math.ceil(carlist.length / postPerPage)
+
 
     useEffect(() => {
         db.collection("autocar").doc("sellcar").collection("cars").orderBy("timestamp","desc").onSnapshot(snapshot=>{
@@ -43,7 +53,7 @@ function Carlist() {
     }, [sortType])
 
 
-    const DisplayCarList = carlist.map(item=>(
+    const DisplayCarList = currentPost.map(item=>(
         <CardItem 
             key={item.id}
             id={item.id} 
@@ -69,6 +79,9 @@ function Carlist() {
         setSortType(e.target.value)
     }
 
+    const handlePostPerPage = (page)=>{
+        setPostPerPage(page)
+    }
     return (
         <div className="carlist">
             <div className="carlist-container">
@@ -77,8 +90,18 @@ function Carlist() {
                         <h1>Inventory</h1>
                     </div>
                     <div className="car-list-header-sorting">
+                        <p>posts per page:</p>
+                        <div className="select-page">
+                            <ButtonGroup size="small" aria-label="small outlined button group">
+                                <Button onClick={()=>handlePostPerPage(10)}>10</Button>
+                                <Button onClick={() =>handlePostPerPage(20)}>20</Button>
+                                <Button onClick={() =>handlePostPerPage(40)}>40</Button>
+                            </ButtonGroup>
+                        </div>
+                
                         <p>Sort by:</p>
                         <div className="sorting-container">
+
                             <select onChange={handleChange}  className="form-select" aria-label="Default select example">
                                 <option defaultValue>Open this select menu</option>
                                 <option value="price">Price</option>
@@ -95,8 +118,20 @@ function Carlist() {
                 </div>
                 <ul>           
                     {DisplayCarList}
+
                 </ul>
-                    
+                <Pagination
+                    count={paginationLength}
+                    color="primary"
+                    defaultPage={currentPage}
+                    hideNextButton="false"
+                    hidePrevButton="false"
+                    onChange={(e, value) => { 
+                        setCurrentPage(value)
+                        window.scrollTo(0, 0)
+
+                    }}
+                />
             </div>
         </div>
     )
