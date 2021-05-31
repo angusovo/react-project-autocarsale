@@ -4,7 +4,7 @@
 
 .carlist-container > ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
     grid-gap: 3rem 1rem;
 
 }
@@ -33,7 +33,7 @@
 }
 
 .car-list-header{
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
     display: flex;
     margin: auto;
     align-items: center;
@@ -64,6 +64,42 @@
     flex-direction: row;
 }
 
+.pagination-bar{
+    width: 100%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center
+;}
+
+.search-bar{
+    display: flex;
+    justify-content: flex-end;
+}
+.search-bar-input{
+    display: flex;
+    align-items: center;
+    border: 1px solid #242424;
+    border-radius: 5px;
+    padding:5px 10px;
+    margin: 0 30px 30px 0;
+
+}
+.search-bar-input > input{
+  border: none;
+
+}
+.search-bar-input > input:focus{
+  outline: none;
+
+}
+
+.empty-result{
+    width: 100%;
+    display: flex;
+    padding: 3rem;
+    justify-content: center;
+}
+
 @media only screen and (max-width: 960px) {
     .car-list-header{
       flex-direction: column;
@@ -82,7 +118,7 @@
     .car-list-header-sorting{
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
     .sorting-container{
         display: flex;
@@ -95,4 +131,15 @@
     .car-list-header{
         padding: 10px 0;
     }
+    .search-bar{
+        justify-content: center;
+    }
   }
+@media only screen and (max-width: 1200px) {
+
+  .carlist-container > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 3rem 1rem;
+  }
+}

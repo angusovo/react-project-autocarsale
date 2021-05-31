@@ -6,18 +6,52 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import Pagination from '@material-ui/lab/Pagination';
 import { ButtonGroup, Button } from '@material-ui/core';
+import { SearchRounded } from '@material-ui/icons';
 function Carlist() {
     const [carlist, setCarlist] = useState([]) 
     const [sortType, setSortType] = useState("timestamp")
     const [isReverse, setIsReverse] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(10)
+    const [postPerPage, setPostPerPage] = useState(8)
+    const [searchValue, setSearchValue] = useState("")
 
     const indexOfLastPost =currentPage * postPerPage
     const indexOfFirstPost = indexOfLastPost - postPerPage
 
-    const currentPost = carlist.slice(indexOfFirstPost, indexOfLastPost)
-    const paginationLength = Math.ceil(carlist.length / postPerPage)
+    const currentPost = carlist
+    .filter((item) => {
+        if (searchValue === "") {
+            return item
+        }
+        else if (item.carMake.toLowerCase().includes(searchValue.toLocaleLowerCase())) {
+            return item
+        }
+        else if (item.carModel.toLowerCase().includes(searchValue.toLocaleLowerCase())) {
+            return item
+        }
+
+        return false
+
+    })
+    .map(item => 
+        (
+            <CardItem
+                key={item.id}
+                id={item.id}
+                src={item.picUrl}
+                carMake={item.carMake}
+                carModel={item.carModel}
+                seat={item.seat}
+                price={item.price}
+                transmission={item.transmission}
+                mileage={item.mileage}
+                owner={item.owner}
+                cc={item.cc}
+                carVeriant={item.carVeriant}
+                date={item.timestamp} />
+    ))
+
+    const paginationLength = Math.ceil(currentPost.length / postPerPage)
 
 
     useEffect(() => {
@@ -50,25 +84,12 @@ function Carlist() {
         sortArray(sortType)
         window.scrollTo(0, 0)
        
-    }, [sortType])
+    }, [sortType, postPerPage])
 
 
-    const DisplayCarList = currentPost.map(item=>(
-        <CardItem 
-            key={item.id}
-            id={item.id} 
-            src={item.picUrl} 
-            carMake={item.carMake} 
-            carModel={item.carModel} 
-            seat={item.seat} 
-            price={item.price} 
-            transmission={item.transmission} 
-            mileage={item.mileage} 
-            owner={item.owner} 
-            cc={item.cc} 
-            carVeriant={item.carVeriant}
-            date={item.timestamp}/>
-    ))
+    const DisplayCarList = currentPost
+    .slice(indexOfFirstPost, indexOfLastPost)
+    
     const reverseCarlist=()=>{
         setIsReverse(!isReverse)
         setCarlist([...carlist].reverse())
@@ -82,6 +103,10 @@ function Carlist() {
     const handlePostPerPage = (page)=>{
         setPostPerPage(page)
     }
+
+    const handleSearch = e => {
+        setSearchValue(e.target.value)
+    }
     return (
         <div className="carlist">
             <div className="carlist-container">
@@ -93,9 +118,25 @@ function Carlist() {
                         <p>posts per page:</p>
                         <div className="select-page">
                             <ButtonGroup size="small" aria-label="small outlined button group">
-                                <Button onClick={()=>handlePostPerPage(10)}>10</Button>
-                                <Button onClick={() =>handlePostPerPage(20)}>20</Button>
-                                <Button onClick={() =>handlePostPerPage(40)}>40</Button>
+                                <Button 
+                                style={postPerPage===8?{background:"#ECECEC"}:null} 
+                                onClick={()=>{handlePostPerPage(8)
+                                    setCurrentPage(1)}}
+                                >8</Button>
+
+                                <Button 
+                                style={postPerPage === 12 ? {background: "#ECECEC" } : null}
+                                onClick={() =>{handlePostPerPage(12)
+                                                setCurrentPage(1)}
+                                }>12</Button>
+                                
+                                <Button 
+                                style={postPerPage === 24 ? { background: "#ECECEC" } : null}
+                                onClick={() =>{
+                                    handlePostPerPage(24)
+                                    setCurrentPage(1)
+                                    }}>24</Button>
+
                             </ButtonGroup>
                         </div>
                 
@@ -114,24 +155,37 @@ function Carlist() {
                                 {isReverse?<ArrowUpwardIcon/>:<ArrowDownwardIcon/>}
                             </div>
                         </div>
+
+                    </div>
+
+                </div>
+                
+                <div className="search-bar">
+                    <div className="search-bar-input">
+                        <input placeholder="Search.." onChange={handleSearch} />
+                        <SearchRounded />
                     </div>
                 </div>
-                <ul>           
-                    {DisplayCarList}
 
-                </ul>
-                <Pagination
-                    count={paginationLength}
-                    color="primary"
-                    defaultPage={currentPage}
-                    hideNextButton="false"
-                    hidePrevButton="false"
-                    onChange={(e, value) => { 
-                        setCurrentPage(value)
-                        window.scrollTo(0, 0)
+                {currentPost.length === 0 ?
+                <div className="empty-result">no result for "{searchValue}", try to change other keywords</div>:
+                <ul>{DisplayCarList}</ul>
+                }
 
-                    }}
-                />
+                <div className="pagination-bar">
+                    <Pagination
+                        count={paginationLength}
+                        color="primary"
+                        defaultPage={currentPage}
+                        hideNextButton={false}
+                        hidePrevButton={false}
+                        onChange={(e, value) => { 
+                            setCurrentPage(value)
+                            window.scrollTo(0, 0)
+
+                        }}
+                    />
+                </div>
             </div>
         </div>
     )

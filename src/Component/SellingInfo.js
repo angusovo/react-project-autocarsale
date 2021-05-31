@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../Context/AuthContext'
 import { Button } from './Button'
 import "./SellingInfo.css"
 import SellingInfoItem from './SellingInfoItem'
 
 function SellingInfo() {
+    const {currnetUser} = useAuth()
     return (
         <div className="selling-info">
             <div className="selling-container">
@@ -23,7 +25,7 @@ function SellingInfo() {
                 heading="An offer you can count on"
                 text="No matter where you sell, start with a custom offer from CarMax."
                 />
-                <Button location="/sellcar">Click to Sell!</Button>
+                <Button location={currnetUser ? "/sellcar" :"/sellcarinfo"}>Click to Sell!</Button>
             </div>
         </div>
     )
